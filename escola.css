@@ -1,13 +1,222 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
+
 body {
-    width: 100vw;
-    height: 100vh;
+    font-family: 'Cormorant Garamond', serif;
+    /* Fallback sólido */
+    background-color: #80F2DD;
+        /* Camadas: 5 nuvens (topo) + gradiente (base) */
+        background-image:
+            url('sol.svg'),
+            url('https://cdn.prod.website-files.com/68397108d6cb6ceb1b41f856/686e13fb0eb2c587189e5bc5_Union-2.svg'),
+            url('https://cdn.prod.website-files.com/68397108d6cb6ceb1b41f856/686e13fb0eb2c587189e5bc5_Union-2.svg'),
+            url('https://cdn.prod.website-files.com/68397108d6cb6ceb1b41f856/686e13fb0eb2c587189e5bc5_Union-2.svg'),
+            url('https://cdn.prod.website-files.com/68397108d6cb6ceb1b41f856/686e13fb0eb2c587189e5bc5_Union-2.svg'),
+            url('https://cdn.prod.website-files.com/68397108d6cb6ceb1b41f856/686e13fb0eb2c587189e5bc5_Union-2.svg'),
+            linear-gradient(to bottom, #11A0D9 0%, #69b5d3 50%, #cef3ec 100%);
+        background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+        background-position:
+            10vw 1vh,  /* sol */
+            1vw 14vh,
+            82vw 10vh,
+            80vw 30vh,
+            11vw 34vh,
+            86vw 46vh,
+            top left; /* gradiente */
+        background-size:
+            20vw auto,
+            14vw auto,
+            11vw auto,
+            17vw auto,
+            12vw auto,
+            15vw auto,
+            auto; /* gradiente */
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+
+/* Distribuição melhor em telas grandes */
+@media (min-width: 1200px) {
+    body {
+        background-position:
+            10vw 1vh,              /* sol */
+            6vw 16vh,              /* nuvem 1 */
+            88vw 12vh,             /* nuvem 2 */
+            60vw 26vh,             /* nuvem 3 (mais ao lado do card) */
+            18vw 42vh,             /* nuvem 4 */
+            88vw 58vh,             /* nuvem 5 */
+            top left;              /* gradiente */
+        background-size:
+            clamp(160px, 18vw, 340px) auto, /* sol */
+            clamp(120px, 13vw, 260px) auto,
+            clamp(100px, 11vw, 220px) auto,
+            clamp(140px, 15vw, 280px) auto,
+            clamp(110px, 12vw, 240px) auto,
+            clamp(120px, 13vw, 260px) auto,
+            auto; /* gradiente */
+    }
+}
+
+/* Refinar ainda mais para telas extra largas */
+@media (min-width: 1600px) {
+    body {
+        background-position:
+            17vw -2vh,
+            5vw 18vh,
+            90vw 14vh,
+            62vw 28vh,
+            20vw 46vh,
+            90vw 50vh,
+            top left;
+        background-size:
+            clamp(200px, 16vw, 380px) auto,
+            clamp(140px, 12vw, 300px) auto,
+            clamp(120px, 10vw, 260px) auto,
+            clamp(160px, 13vw, 320px) auto,
+            clamp(140px, 11vw, 300px) auto,
+            clamp(150px, 12vw, 320px) auto,
+            auto;
+    }
+}
+
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    color: #fff;
+    background: transparent;
+   
+}
+
+.nuvem {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100px;
+    opacity: 0.7;
+    z-index: -1; /* Coloca a imagem atrás do texto */
 }
 
 h1 {
-    color: blue;
-    font-size: 3em;
+    margin: 0;
+    font-size: 50px;
+    background: rgba(255, 255, 255, 0.137); /* fundo branco translúcido */
+    backdrop-filter: blur(2px);          /* aplica o desfoque */
+    border-radius: 40px;                  /* cantos arredondados */
+    border: 1px solid rgba(255, 255, 255, 0.068); /* borda suave */
+    padding: 20px;
+    margin: 0 auto;              /* centra */
+    max-width: clamp(320px, 60vw, 900px); /* limita largura em telas grandes */
+    
+}
+
+h1:hover {
+    background: rgba(255, 255, 255, 0.25); /* aumenta a opacidade ao passar o mouse */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* adiciona uma sombra suave */
+    /* não altere margens no hover para evitar saltos de layout */
+}
+
+section {
+    padding: 20px;
+    background: transparent;
+}       
+
+main {
+    flex: 1 0 auto; /* ocupa o espaço disponível */
+}
+
+
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #0e0909;
     text-align: center;
+}
+
+h2 {
+    color: #0e0909;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 5px;
+    
+}
+
+.eventos {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    background-color: #fff;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 12px;
+    box-shadow: 3px 3px 2px 2px rgb(0, 0, 0);
+    padding: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+li {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #0e0909;
+    margin-left: 10%;
+    margin-right: 20%;
+    
+}
+
+.outdoor {
+    background-color: #4cdb7c;
+    margin-top: 20px;
+    margin-left: 10%;
+    margin-right: 20%;
+    border-radius: 10px;
+}
+
+span {
+    font-weight: bold;
+    color: #c40909;
+    font-size: 20px;
+}
+
+.contact {
+    flex-shrink: 0; /* não encolhe */
+    margin-top: 100px; /* distância maior do conteúdo acima */
+    padding: 2px 0px;
+    height: 160px;
+    background: rgba(21, 123, 206, 0.9);
+    color: #fff;
+    text-align: center;
+    border-top: 3px solid rgba(0,0,0,0.3);
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
+   
+}
+
+.contact h2, .contact p {
+    color: #ffffff;
+}
+.contact span {
+    color: #c2bf24;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+footer {
+    flex-shrink: 0; /* não encolhe */
+    background: rgba(6, 99, 175, 0.932); /* integra com a seção de contato */
+    text-align: center;
+    width: 100%;
+    height: auto;
+    padding: 2px 0px;
+    color: #ffffff;
+    font-size: 18px;
 }
